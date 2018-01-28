@@ -8,8 +8,8 @@ var timer;
 
 var currX;
 var currY;
-var prevVertex = -1;
-var prevprevVertex = -1;
+var prevVertex;
+var prevprevVertex;
 var vertexOptions = [];
 var rule;
 
@@ -61,6 +61,8 @@ function draw() {
     vertex = rule3();
   } else if (rule == 4) {
     vertex = rule4();
+  } else if (rule == 5) {
+    vertex = rule5();
   }
   prevprevVertex = prevVertex;
   prevVertex = vertex;
@@ -166,6 +168,11 @@ function changeVerticiesHandler() {
   changeVerticies(vCount);
 }
 
+function getSelectedPolygonVertexCount() {
+  var polygonSelector = document.getElementById("polygons");
+  var vCount = polygonSelector.options[polygonSelector.selectedIndex].value;
+}
+
 function changeVerticies(sides) {
   var r = WIDTH/2;
   var initialRotation = 3 * Math.PI / 2;
@@ -190,4 +197,10 @@ function changeSizeHandler() {
   canvasDom.height = HEIGHT;
   canvasDom.width = WIDTH;
   clearCanvas();
+
+  // Redraw verticies
+  var polygonSelector = document.getElementById("polygons");
+  var vCount = polygonSelector.options[polygonSelector.selectedIndex].value;
+  vertexOptions = [];
+  changeVerticies(vCount);
 }
