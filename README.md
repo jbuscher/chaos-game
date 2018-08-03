@@ -1,3 +1,3 @@
-#Chaos game
+## Chaos game
 
-See it in action [here](https://www.johnbuscher.com/chaosgame)
+See it in action [here](https://www.johnbuscher.com/chaos)
